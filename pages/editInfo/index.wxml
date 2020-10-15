@@ -1,0 +1,17 @@
+<!--pages/editInfo/index.wxml-->
+<view>
+  <textarea class="content" placeholder="请输入..." style="width:{{width*4+44}}px" auto-height="{{true}}"
+    bindinput="getValue" id="" maxlength="150"></textarea>
+  <view style="display:inline;margin:5px 8px">
+    <view class="upload-d" style="width:{{width}}px;height:{{width}}px;display:inline-block;" wx:for="{{file}}">
+      <image bindtap="delImg" data-index="{{index}}" class="del-img" style="width:45rpx;height:45rpx;"
+        src="../../images/close.png"></image>
+      <image bindtap="previewImg" data-imgurl="{{item}}" mode="aspectFill" style="{{index>=4?'margin-left:8px':''}}"
+        class="upload" src="{{item}}"></image>
+    </view>
+    <image bindtap="insertImg" wx:if="{{fileList.length<9}}"
+      style="width:{{width}}px;height:{{width}}px;{{file.length>=4?'margin-left:18px':'margin-left:10px'}}"
+      src="../../images/uploadImg.png"></image>
+  </view>
+  <button class="sumit-btn" bindtap="summit" style="width:{{width*4+30}}px;margin-left:17px">提交</button>
+</view>

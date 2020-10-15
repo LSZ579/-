@@ -1,0 +1,44 @@
+<!--pages/share/share.wxml-->
+<ad unit-id="adunit-815b64bd977a158b"></ad>
+<button wx:if="{{!show}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
+<view wx:else class="share">
+
+  <view wx:for="{{list}}">
+    <view class="author-info" catchtap="">
+      <image class="avatar" src="{{item.with_user.avatarUrl}}" mode="aspectFill"></image>
+      <view class="name-time">{{item.with_user.user_name}}
+        <view>{{item.add_time}}</view>
+      </view>
+    </view>
+    <view class="share-content" catchtap="toComment"  data-item="{{item}}">
+      {{item.content}}
+    </view>
+    <view style="margin-left:9px" catchtap="toComment"  data-item="{{item}}">
+      <view class="share-picture" wx:for="{{item.img}}" wx:for-item="items" wx:for-index="i"
+        style="width:{{item.img.length==1?width*2:width}}px;height:{{item.img.length==1?width*2:width}}px">
+        <image catchtap="previews" data-pre="{{item.img}}" data-index="{{items}}" mode="aspectFill"
+          src="{{items}}" />
+      </view>
+    </view>
+    <view class="btn" style="margin-top:8px" catchtap="">
+      <view class="btn-item" >
+        <button open-type="share" class="share-btn" catchtap="shareHaddle" data-item="{{item}}" data-index="{{index}}" data-id="{{item.id}}">
+        <image class="like"   src="../../images/share.png"></image>
+        <text  class="num" >{{item.share.count||0}}</text>
+      </button>
+      </view>
+      <view class="btn-item" catchtap="toComment" data-item="{{item}}">
+        <image class="like" src="../../images/comment.png"></image>
+        <view class="num">{{item.comment_count}}</view>
+      </view>
+      <view class="btn-item">
+        <image class="like {{index==current?'active':''}}" id="like" catchtap="likeHaddle" data-shareId="{{item.id}}" data-index="{{index}}" src="{{item.likes.like?'../../images/like.png':'../../images/unlike.png'}}"></image>
+        <view class="num">{{item.like_count}}</view>
+      </view>
+    </view>
+    <view class="box-line"></view>
+  </view>
+  <view  class="ball" bindtap="toEdit">+</view>
+  <!-- wx:if="{{isAdmin}}" -->
+</view>
+
