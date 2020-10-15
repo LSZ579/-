@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "pop":"../../components/popup/popup"
+  },
+  "navigationBarTitleText":"图片详情"
+}

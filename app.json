@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/editInfo/index"
+    "pages/editInfo/index",
+    "pages/share_detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

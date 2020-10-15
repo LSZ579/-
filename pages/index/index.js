@@ -41,6 +41,7 @@ Page({
     })
     this.shareMessage()
   },
+  // 预览图片
   previews(e){
     let index=e.currentTarget.dataset.index,urls=e.currentTarget.dataset.pre;
     console.log(index)
@@ -49,17 +50,14 @@ Page({
       urls: urls // 需要预览的图片http链接列表
     })
   },
+  // 查看详情
   toComment(e){
     let item=e.currentTarget.dataset.item;
     wx.navigateTo({
-      url: '../shareDetail/index?item='+JSON.stringify(item),
+      url: '../share_detail/index?item='+JSON.stringify(item),
     })
   },
-  shareHaddle(e){
- 
-     
-  
-  },
+  // 点赞
   likeHaddle(e){
     if(!this.data.flag){return}
     this.data.flag=false
@@ -86,6 +84,7 @@ Page({
     })
    },1000)
   },
+  // 获取图文列表信息,及用户信息
   shareMessage(){
     wx.showLoading({
       title: '加载中',
@@ -98,7 +97,6 @@ Page({
         }
         else if(res.data.length<data.limit){
           this.data.hasMore=false
-  
         }
         else if(res.data.length==data.limit){
           this.data.query.page=data.page+1
@@ -179,6 +177,7 @@ Page({
       wx.hideLoading()
     },400)
   },
+  //获取token
   getUserInfo: function(e) {
     let info=e.detail.userInfo
     if(info){

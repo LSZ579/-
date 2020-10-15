@@ -1,0 +1,70 @@
+<view class="page">
+<view class="fixed">
+  <view class="btn">
+  <view class="btn-item">
+    <button open-type="share" class="share-btn" catchtap="shareHaddle" data-item="{{item}}" data-id="{{item.id}}">
+      <image class="like" src="../../images/share.png"></image>
+      <text class="num">{{item.share.count||0}}</text>
+    </button>
+  </view>
+  <view class="btn-item" bindtap="showModel" data-item="{{item}}">
+    <image class="like" src="../../images/comment.png"></image>
+    <view class="num">{{detail.comment_count}}</view>
+  </view>
+  <view class="btn-item">
+    <image class="like {{current?'active':''}}" id="like" catchtap="likeHaddle" data-shareId="{{detail.id}}"
+      src="{{detail.likes.like?'../../images/like.png':'../../images/unlike.png'}}"></image>
+    <view class="num">{{detail.like_count}}</view>
+  </view>
+</view>
+</view>
+<view class="author-info">
+  <image class="avatar" src="{{detail.with_user.avatarUrl}}" mode="aspectFill"></image>
+  <view class="name-time">{{detail.with_user.user_name}}
+    <view>{{detail.add_time}}</view>
+  </view>
+</view>
+<view class="share-content">
+  {{detail.content}}
+</view>
+<view style="margin-left:9px">
+  <view class="share-picture" wx:for="{{img}}" wx:key="index"
+    style="width:{{img.length==1?width*2:width}}px;height:{{img.length==1?width*2:width}}px">
+    <image bindtap="previews" data-pre="{{img}}" data-index="{{item}}" mode="aspectFill" src="{{item}}" />
+  </view>
+</view>
+<view class="box-line"></view>
+<view class="flex">
+  <view class="comment">评论</view>
+  <view class="support"> {{detail.like_count}}点赞</view>
+</view>
+<view wx:for="{{list}}" class="comment-content">
+  <view class="com-author-info">
+    <view> <image class="com-avatar" src="{{item.width_user.avatarUrl}}" mode="aspectFill"></image></view>
+    <view class="com">
+      <view>{{detail.with_user.user_name}}</view>
+      <view class="com-contents">
+    {{item.content}}
+  </view>
+    </view>
+  </view>
+</view>
+<view class="null">暂无评论</view>
+
+
+<!-- <view>
+      <view class="pop-bgm {{flag?'showbgm':'hidebgm'}}" catchtap="hide"></view>
+      <view class="pop {{flag?'show':''}}" catchtap="show"></view>
+    </view> -->
+<pop id="pop" showModel="{{showModel}}">
+  <view>
+    <view class="cancel">
+      <text bindtap="showModel">取消</text>
+    </view>
+    <view class="content_value">
+      <textarea name="value" id="" bindinput="getValue" cols="30" rows="10" placeholder-class="placeh" value="{{content}}" placeholder="请输入内容"></textarea>
+    </view>
+    <view class="bottom-btn" bindtap="addComment">发送</view>
+  </view>
+</pop>
+</view>

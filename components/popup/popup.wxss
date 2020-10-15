@@ -1,0 +1,68 @@
+/* components/popup/popup.wxss */
+.pop-mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0,0.5);
+  display: none;
+  z-index: 10;
+ 
+}
+.hide{
+  animation: popup 0.4s ease;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(0);
+}
+@keyframes popup{
+  0%{
+    transform: translateY(0);
+    
+  }
+  30%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(30vh);
+  }
+}
+.actives{
+  display: block;
+  
+}
+.pop-content{
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  background-color: rgb(255, 255, 255);
+  transform: translateY(150%);
+  transition: all 0.4 ease;
+  z-index: 12;
+}
+.acvtive{
+  transform: translateY(0);
+}
+
+.show{
+  animation: pop 0.4s ease;
+  height:auto;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(0);
+
+  z-index: 99;
+}
+  @keyframes pop{
+    from{
+      transform: translateY(100%);
+      
+    }
+    to{
+      transform: translateY(0);
+    }
+  }
